@@ -21,6 +21,7 @@ using namespace std;
 #define TORUS_KNOT 2
 #define HOPF_LINK 3
 #define BORR_RINGS 4
+#define THREE_TWIST 5
 
 /*************************General maths and integer functions*****************************/
 
@@ -53,6 +54,8 @@ double init_from_k_file(void);
 double init_hopf_link(void);
 
 double init_borr_rings(void);
+
+double init_three_twist(void);
 
 double initialise_knot();
 
