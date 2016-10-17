@@ -1,0 +1,720 @@
+<CustomFilterDefinitions>
+  <CustomProxyDefinition name="U_contours" group="filters">
+    <CompoundSourceProxy id="8519" servers="1">
+      <Proxy group="filters" type="Calculator" id="8149" servers="1" compound_name="Calculator1">
+        <Property name="AttributeMode" id="8149.AttributeMode" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="enum" id="8149.AttributeMode.enum">
+            <Entry value="1" text="Point Data"/>
+            <Entry value="2" text="Cell Data"/>
+          </Domain>
+        </Property>
+        <Property name="CoordinateResults" id="8149.CoordinateResults" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="8149.CoordinateResults.bool"/>
+        </Property>
+        <Property name="Function" id="8149.Function" number_of_elements="1">
+          <Element index="0" value="u"/>
+        </Property>
+        <Property name="Input" id="8149.Input" number_of_elements="1">
+          <Domain name="groups" id="8149.Input.groups"/>
+          <Domain name="input_array" id="8149.Input.input_array"/>
+          <Domain name="input_type" id="8149.Input.input_type"/>
+        </Property>
+        <Property name="ReplaceInvalidValues" id="8149.ReplaceInvalidValues" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="8149.ReplaceInvalidValues.bool"/>
+        </Property>
+        <Property name="ReplacementValue" id="8149.ReplacementValue" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="range" id="8149.ReplacementValue.range"/>
+        </Property>
+        <Property name="ResultArrayName" id="8149.ResultArrayName" number_of_elements="1">
+          <Element index="0" value="U2"/>
+        </Property>
+        <Property name="ResultNormals" id="8149.ResultNormals" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="8149.ResultNormals.bool"/>
+        </Property>
+        <Property name="ResultTCoords" id="8149.ResultTCoords" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="8149.ResultTCoords.bool"/>
+        </Property>
+      </Proxy>
+      <Proxy group="filters" type="Contour" id="8340" servers="1" compound_name="Contour1">
+        <Property name="ComputeGradients" id="8340.ComputeGradients" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="8340.ComputeGradients.bool"/>
+        </Property>
+        <Property name="ComputeNormals" id="8340.ComputeNormals" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="8340.ComputeNormals.bool"/>
+        </Property>
+        <Property name="ComputeScalars" id="8340.ComputeScalars" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="8340.ComputeScalars.bool"/>
+        </Property>
+        <Property name="ContourValues" id="8340.ContourValues" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="scalar_range" id="8340.ContourValues.scalar_range"/>
+        </Property>
+        <Property name="GenerateTriangles" id="8340.GenerateTriangles" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="8340.GenerateTriangles.bool"/>
+        </Property>
+        <Property name="Input" id="8340.Input" number_of_elements="1">
+          <Proxy value="8149" output_port="0"/>
+          <Domain name="groups" id="8340.Input.groups"/>
+          <Domain name="input_array" id="8340.Input.input_array"/>
+          <Domain name="input_type" id="8340.Input.input_type"/>
+        </Property>
+        <Property name="Locator" id="8340.Locator" number_of_elements="1">
+          <Proxy value="8337"/>
+          <Domain name="groups" id="8340.Locator.groups"/>
+          <Domain name="proxy_list" id="8340.Locator.proxy_list">
+            <Proxy value="8337"/>
+            <Proxy value="8338"/>
+            <Proxy value="8339"/>
+          </Domain>
+        </Property>
+        <Property name="OutputPointsPrecision" id="8340.OutputPointsPrecision" number_of_elements="1">
+          <Element index="0" value="2"/>
+          <Domain name="enum" id="8340.OutputPointsPrecision.enum">
+            <Entry value="0" text="Single"/>
+            <Entry value="1" text="Double"/>
+            <Entry value="2" text="Same as input"/>
+          </Domain>
+        </Property>
+        <Property name="SelectInputScalars" id="8340.SelectInputScalars" number_of_elements="5">
+          <Element index="0" value=""/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="u"/>
+          <Domain name="array_list" id="8340.SelectInputScalars.array_list">
+            <String text="U2"/>
+            <String text="u"/>
+            <String text="ucrossv"/>
+          </Domain>
+          <Domain name="field_list" id="8340.SelectInputScalars.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+      </Proxy>
+      <Proxy group="incremental_point_locators" type="MergePoints" id="8337" servers="1" compound_name="auto_8337">
+        <Property name="Divisions" id="8337.Divisions" number_of_elements="3">
+          <Element index="0" value="50"/>
+          <Element index="1" value="50"/>
+          <Element index="2" value="50"/>
+        </Property>
+        <Property name="NumberOfPointsPerBucket" id="8337.NumberOfPointsPerBucket" number_of_elements="1">
+          <Element index="0" value="8"/>
+        </Property>
+      </Proxy>
+      <ExposedProperties>
+        <Property name="Input" proxy_name="Calculator1" exposed_name="Input"/>
+        <Property name="ContourValues" proxy_name="Contour1" exposed_name="Isosurfaces"/>
+      </ExposedProperties>
+      <OutputPort name="Output" proxy="Contour1" port_index="0"/>
+      <Hints>
+        <ShowInMenu/>
+      </Hints>
+    </CompoundSourceProxy>
+  </CustomProxyDefinition>
+  <CustomProxyDefinition name="Plot_Knot" group="filters">
+    <CompoundSourceProxy id="7035" servers="1">
+      <Proxy group="filters" type="Glyph" id="6856" servers="1" compound_name="Glyph1">
+        <Property name="GlyphMode" id="6856.GlyphMode" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="enum" id="6856.GlyphMode.enum">
+            <Entry value="0" text="All Points"/>
+            <Entry value="1" text="Every Nth Point"/>
+            <Entry value="2" text="Uniform Spatial Distribution"/>
+          </Domain>
+        </Property>
+        <Property name="GlyphTransform" id="6856.GlyphTransform" number_of_elements="1">
+          <Proxy value="6778"/>
+          <Domain name="proxy_list" id="6856.GlyphTransform.proxy_list">
+            <Proxy value="6778"/>
+          </Domain>
+        </Property>
+        <Property name="Input" id="6856.Input" number_of_elements="1">
+          <Domain name="groups" id="6856.Input.groups"/>
+          <Domain name="input_array1" id="6856.Input.input_array1"/>
+          <Domain name="input_array2" id="6856.Input.input_array2"/>
+          <Domain name="input_type" id="6856.Input.input_type"/>
+        </Property>
+        <Property name="MaximumNumberOfSamplePoints" id="6856.MaximumNumberOfSamplePoints" number_of_elements="1">
+          <Element index="0" value="2000"/>
+          <Domain name="range" id="6856.MaximumNumberOfSamplePoints.range"/>
+        </Property>
+        <Property name="Orient" id="6856.Orient" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="6856.Orient.bool"/>
+        </Property>
+        <Property name="Scalars" id="6856.Scalars" number_of_elements="5">
+          <Element index="0" value="0"/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="None"/>
+          <Domain name="array_list" id="6856.Scalars.array_list">
+            <String text="None"/>
+          </Domain>
+          <Domain name="field_list" id="6856.Scalars.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+        <Property name="ScaleFactor" id="6856.ScaleFactor" number_of_elements="1">
+          <Element index="0" value="6.66666030883789"/>
+          <Domain name="bounds" id="6856.ScaleFactor.bounds"/>
+          <Domain name="scalar_range" id="6856.ScaleFactor.scalar_range"/>
+          <Domain name="vector_range" id="6856.ScaleFactor.vector_range"/>
+        </Property>
+        <Property name="ScaleMode" id="6856.ScaleMode" number_of_elements="1">
+          <Element index="0" value="3"/>
+          <Domain name="enum" id="6856.ScaleMode.enum">
+            <Entry value="0" text="scalar"/>
+            <Entry value="1" text="vector"/>
+            <Entry value="2" text="vector_components"/>
+            <Entry value="3" text="off"/>
+          </Domain>
+        </Property>
+        <Property name="Seed" id="6856.Seed" number_of_elements="1">
+          <Element index="0" value="10339"/>
+          <Domain name="range" id="6856.Seed.range"/>
+        </Property>
+        <Property name="Source" id="6856.Source" number_of_elements="1">
+          <Proxy value="6779" output_port="0"/>
+          <Domain name="groups" id="6856.Source.groups"/>
+          <Domain name="input_type" id="6856.Source.input_type"/>
+          <Domain name="proxy_list" id="6856.Source.proxy_list">
+            <Proxy value="6779"/>
+            <Proxy value="6790"/>
+            <Proxy value="6801"/>
+            <Proxy value="6812"/>
+            <Proxy value="6823"/>
+            <Proxy value="6834"/>
+            <Proxy value="6845"/>
+          </Domain>
+        </Property>
+        <Property name="Stride" id="6856.Stride" number_of_elements="1">
+          <Element index="0" value="12"/>
+          <Domain name="range" id="6856.Stride.range"/>
+        </Property>
+        <Property name="Vectors" id="6856.Vectors" number_of_elements="5">
+          <Element index="0" value="1"/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="Tangent"/>
+          <Domain name="array_list" id="6856.Vectors.array_list">
+            <String text="None"/>
+            <String text="Tangent"/>
+          </Domain>
+          <Domain name="field_list" id="6856.Vectors.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+      </Proxy>
+      <Proxy group="extended_sources" type="Transform2" id="6778" servers="1" compound_name="auto_6778">
+        <Property name="Position" id="6778.Position" number_of_elements="3">
+          <Element index="0" value="0"/>
+          <Element index="1" value="0"/>
+          <Element index="2" value="0"/>
+          <Domain name="range" id="6778.Position.range"/>
+        </Property>
+        <Property name="PositionInfo" id="6778.PositionInfo" number_of_elements="3">
+          <Element index="0" value="0"/>
+          <Element index="1" value="0"/>
+          <Element index="2" value="0"/>
+        </Property>
+        <Property name="Rotation" id="6778.Rotation" number_of_elements="3">
+          <Element index="0" value="0"/>
+          <Element index="1" value="0"/>
+          <Element index="2" value="0"/>
+          <Domain name="range" id="6778.Rotation.range"/>
+        </Property>
+        <Property name="RotationInfo" id="6778.RotationInfo" number_of_elements="3">
+          <Element index="0" value="0"/>
+          <Element index="1" value="0"/>
+          <Element index="2" value="0"/>
+        </Property>
+        <Property name="Scale" id="6778.Scale" number_of_elements="3">
+          <Element index="0" value="1"/>
+          <Element index="1" value="1"/>
+          <Element index="2" value="1"/>
+          <Domain name="range" id="6778.Scale.range"/>
+        </Property>
+        <Property name="ScaleInfo" id="6778.ScaleInfo" number_of_elements="3">
+          <Element index="0" value="1"/>
+          <Element index="1" value="1"/>
+          <Element index="2" value="1"/>
+        </Property>
+      </Proxy>
+      <Proxy group="sources" type="ArrowSource" id="6779" servers="1" compound_name="auto_6779">
+        <Property name="Invert" id="6779.Invert" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="6779.Invert.bool"/>
+        </Property>
+        <Property name="ShaftRadius" id="6779.ShaftRadius" number_of_elements="1">
+          <Element index="0" value="0.03"/>
+          <Domain name="range" id="6779.ShaftRadius.range"/>
+        </Property>
+        <Property name="ShaftResolution" id="6779.ShaftResolution" number_of_elements="1">
+          <Element index="0" value="6"/>
+          <Domain name="range" id="6779.ShaftResolution.range"/>
+        </Property>
+        <Property name="TipLength" id="6779.TipLength" number_of_elements="1">
+          <Element index="0" value="0.35"/>
+          <Domain name="range" id="6779.TipLength.range"/>
+        </Property>
+        <Property name="TipRadius" id="6779.TipRadius" number_of_elements="1">
+          <Element index="0" value="0.1"/>
+          <Domain name="range" id="6779.TipRadius.range"/>
+        </Property>
+        <Property name="TipResolution" id="6779.TipResolution" number_of_elements="1">
+          <Element index="0" value="6"/>
+          <Domain name="range" id="6779.TipResolution.range"/>
+        </Property>
+      </Proxy>
+      <ExposedProperties>
+        <Property name="GlyphMode" proxy_name="Glyph1" exposed_name="Glyph Mode"/>
+        <Property name="Input" proxy_name="Glyph1" exposed_name="Input"/>
+        <Property name="MaximumNumberOfSamplePoints" proxy_name="Glyph1" exposed_name="Maximum Number Of Sample Points"/>
+        <Property name="ScaleFactor" proxy_name="Glyph1" exposed_name="Scale Factor"/>
+        <Property name="ScaleMode" proxy_name="Glyph1" exposed_name="Scale Mode"/>
+        <Property name="Stride" proxy_name="Glyph1" exposed_name="Stride"/>
+      </ExposedProperties>
+      <OutputPort name="Output" proxy="Glyph1" port_index="0"/>
+      <Hints>
+        <ShowInMenu/>
+      </Hints>
+    </CompoundSourceProxy>
+  </CustomProxyDefinition>
+  <CustomProxyDefinition name="Phi_Contours" group="filters">
+    <CompoundSourceProxy id="7904" servers="1">
+      <Proxy group="filters" type="Calculator" id="6956" servers="1" compound_name="Calculator1">
+        <Property name="AttributeMode" id="6956.AttributeMode" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="enum" id="6956.AttributeMode.enum">
+            <Entry value="1" text="Point Data"/>
+            <Entry value="2" text="Cell Data"/>
+          </Domain>
+        </Property>
+        <Property name="CoordinateResults" id="6956.CoordinateResults" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="6956.CoordinateResults.bool"/>
+        </Property>
+        <Property name="Function" id="6956.Function" number_of_elements="1">
+          <Element index="0" value="Phi"/>
+        </Property>
+        <Property name="Input" id="6956.Input" number_of_elements="1">
+          <Domain name="groups" id="6956.Input.groups"/>
+          <Domain name="input_array" id="6956.Input.input_array"/>
+          <Domain name="input_type" id="6956.Input.input_type"/>
+        </Property>
+        <Property name="ReplaceInvalidValues" id="6956.ReplaceInvalidValues" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="6956.ReplaceInvalidValues.bool"/>
+        </Property>
+        <Property name="ReplacementValue" id="6956.ReplacementValue" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="range" id="6956.ReplacementValue.range"/>
+        </Property>
+        <Property name="ResultArrayName" id="6956.ResultArrayName" number_of_elements="1">
+          <Element index="0" value="Phi2"/>
+        </Property>
+        <Property name="ResultNormals" id="6956.ResultNormals" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="6956.ResultNormals.bool"/>
+        </Property>
+        <Property name="ResultTCoords" id="6956.ResultTCoords" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="6956.ResultTCoords.bool"/>
+        </Property>
+      </Proxy>
+      <Proxy group="filters" type="Contour" id="7341" servers="1" compound_name="Contour1">
+        <Property name="ComputeGradients" id="7341.ComputeGradients" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="7341.ComputeGradients.bool"/>
+        </Property>
+        <Property name="ComputeNormals" id="7341.ComputeNormals" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="7341.ComputeNormals.bool"/>
+        </Property>
+        <Property name="ComputeScalars" id="7341.ComputeScalars" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="7341.ComputeScalars.bool"/>
+        </Property>
+        <Property name="ContourValues" id="7341.ContourValues" number_of_elements="1">
+          <Element index="0" value="2"/>
+          <Domain name="scalar_range" id="7341.ContourValues.scalar_range"/>
+        </Property>
+        <Property name="GenerateTriangles" id="7341.GenerateTriangles" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="7341.GenerateTriangles.bool"/>
+        </Property>
+        <Property name="Input" id="7341.Input" number_of_elements="1">
+          <Proxy value="7144" output_port="0"/>
+          <Domain name="groups" id="7341.Input.groups"/>
+          <Domain name="input_array" id="7341.Input.input_array"/>
+          <Domain name="input_type" id="7341.Input.input_type"/>
+        </Property>
+        <Property name="Locator" id="7341.Locator" number_of_elements="1">
+          <Proxy value="7338"/>
+          <Domain name="groups" id="7341.Locator.groups"/>
+          <Domain name="proxy_list" id="7341.Locator.proxy_list">
+            <Proxy value="7338"/>
+            <Proxy value="7339"/>
+            <Proxy value="7340"/>
+          </Domain>
+        </Property>
+        <Property name="OutputPointsPrecision" id="7341.OutputPointsPrecision" number_of_elements="1">
+          <Element index="0" value="2"/>
+          <Domain name="enum" id="7341.OutputPointsPrecision.enum">
+            <Entry value="0" text="Single"/>
+            <Entry value="1" text="Double"/>
+            <Entry value="2" text="Same as input"/>
+          </Domain>
+        </Property>
+        <Property name="SelectInputScalars" id="7341.SelectInputScalars" number_of_elements="5">
+          <Element index="0" value=""/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="Phi"/>
+          <Domain name="array_list" id="7341.SelectInputScalars.array_list">
+            <String text="Missed"/>
+            <String text="Phi"/>
+            <String text="Phi2"/>
+          </Domain>
+          <Domain name="field_list" id="7341.SelectInputScalars.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+      </Proxy>
+      <Proxy group="filters" type="Contour" id="7717" servers="1" compound_name="Contour2">
+        <Property name="ComputeGradients" id="7717.ComputeGradients" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="7717.ComputeGradients.bool"/>
+        </Property>
+        <Property name="ComputeNormals" id="7717.ComputeNormals" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="7717.ComputeNormals.bool"/>
+        </Property>
+        <Property name="ComputeScalars" id="7717.ComputeScalars" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="7717.ComputeScalars.bool"/>
+        </Property>
+        <Property name="ContourValues" id="7717.ContourValues" number_of_elements="1">
+          <Element index="0" value="-2.5"/>
+          <Domain name="scalar_range" id="7717.ContourValues.scalar_range"/>
+        </Property>
+        <Property name="GenerateTriangles" id="7717.GenerateTriangles" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="7717.GenerateTriangles.bool"/>
+        </Property>
+        <Property name="Input" id="7717.Input" number_of_elements="1">
+          <Proxy value="7520" output_port="0"/>
+          <Domain name="groups" id="7717.Input.groups"/>
+          <Domain name="input_array" id="7717.Input.input_array"/>
+          <Domain name="input_type" id="7717.Input.input_type"/>
+        </Property>
+        <Property name="Locator" id="7717.Locator" number_of_elements="1">
+          <Proxy value="7714"/>
+          <Domain name="groups" id="7717.Locator.groups"/>
+          <Domain name="proxy_list" id="7717.Locator.proxy_list">
+            <Proxy value="7714"/>
+            <Proxy value="7715"/>
+            <Proxy value="7716"/>
+          </Domain>
+        </Property>
+        <Property name="OutputPointsPrecision" id="7717.OutputPointsPrecision" number_of_elements="1">
+          <Element index="0" value="2"/>
+          <Domain name="enum" id="7717.OutputPointsPrecision.enum">
+            <Entry value="0" text="Single"/>
+            <Entry value="1" text="Double"/>
+            <Entry value="2" text="Same as input"/>
+          </Domain>
+        </Property>
+        <Property name="SelectInputScalars" id="7717.SelectInputScalars" number_of_elements="5">
+          <Element index="0" value=""/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="Phi"/>
+          <Domain name="array_list" id="7717.SelectInputScalars.array_list">
+            <String text="Missed"/>
+            <String text="Phi"/>
+            <String text="Phi2"/>
+          </Domain>
+          <Domain name="field_list" id="7717.SelectInputScalars.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+      </Proxy>
+      <Proxy group="filters" type="Threshold" id="7144" servers="1" compound_name="Threshold1">
+        <Property name="AllScalars" id="7144.AllScalars" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="7144.AllScalars.bool"/>
+        </Property>
+        <Property name="Input" id="7144.Input" number_of_elements="1">
+          <Proxy value="6956" output_port="0"/>
+          <Domain name="groups" id="7144.Input.groups"/>
+          <Domain name="input_array" id="7144.Input.input_array"/>
+          <Domain name="input_type" id="7144.Input.input_type"/>
+        </Property>
+        <Property name="SelectInputScalars" id="7144.SelectInputScalars" number_of_elements="5">
+          <Element index="0" value=""/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="Phi2"/>
+          <Domain name="array_list" id="7144.SelectInputScalars.array_list">
+            <String text="Missed"/>
+            <String text="Phi"/>
+            <String text="Phi2"/>
+          </Domain>
+          <Domain name="field_list" id="7144.SelectInputScalars.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+        <Property name="ThresholdBetween" id="7144.ThresholdBetween" number_of_elements="2">
+          <Element index="0" value="0"/>
+          <Element index="1" value="3.14145994186401"/>
+          <Domain name="range" id="7144.ThresholdBetween.range"/>
+        </Property>
+        <Property name="UseContinuousCellRange" id="7144.UseContinuousCellRange" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="7144.UseContinuousCellRange.bool"/>
+        </Property>
+      </Proxy>
+      <Proxy group="filters" type="Threshold" id="7520" servers="1" compound_name="Threshold2">
+        <Property name="AllScalars" id="7520.AllScalars" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="7520.AllScalars.bool"/>
+        </Property>
+        <Property name="Input" id="7520.Input" number_of_elements="1">
+          <Proxy value="6956" output_port="0"/>
+          <Domain name="groups" id="7520.Input.groups"/>
+          <Domain name="input_array" id="7520.Input.input_array"/>
+          <Domain name="input_type" id="7520.Input.input_type"/>
+        </Property>
+        <Property name="SelectInputScalars" id="7520.SelectInputScalars" number_of_elements="5">
+          <Element index="0" value=""/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="Phi2"/>
+          <Domain name="array_list" id="7520.SelectInputScalars.array_list">
+            <String text="Missed"/>
+            <String text="Phi"/>
+            <String text="Phi2"/>
+          </Domain>
+          <Domain name="field_list" id="7520.SelectInputScalars.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+        <Property name="ThresholdBetween" id="7520.ThresholdBetween" number_of_elements="2">
+          <Element index="0" value="-3.14147996902466"/>
+          <Element index="1" value="0"/>
+          <Domain name="range" id="7520.ThresholdBetween.range"/>
+        </Property>
+        <Property name="UseContinuousCellRange" id="7520.UseContinuousCellRange" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="7520.UseContinuousCellRange.bool"/>
+        </Property>
+      </Proxy>
+      <Proxy group="incremental_point_locators" type="MergePoints" id="7338" servers="1" compound_name="auto_7338">
+        <Property name="Divisions" id="7338.Divisions" number_of_elements="3">
+          <Element index="0" value="50"/>
+          <Element index="1" value="50"/>
+          <Element index="2" value="50"/>
+        </Property>
+        <Property name="NumberOfPointsPerBucket" id="7338.NumberOfPointsPerBucket" number_of_elements="1">
+          <Element index="0" value="8"/>
+        </Property>
+      </Proxy>
+      <Proxy group="incremental_point_locators" type="MergePoints" id="7714" servers="1" compound_name="auto_7714">
+        <Property name="Divisions" id="7714.Divisions" number_of_elements="3">
+          <Element index="0" value="50"/>
+          <Element index="1" value="50"/>
+          <Element index="2" value="50"/>
+        </Property>
+        <Property name="NumberOfPointsPerBucket" id="7714.NumberOfPointsPerBucket" number_of_elements="1">
+          <Element index="0" value="8"/>
+        </Property>
+      </Proxy>
+      <ExposedProperties>
+        <Property name="Input" proxy_name="Calculator1" exposed_name="Input"/>
+        <Property name="ContourValues" proxy_name="Contour1" exposed_name="Isosurfaces+"/>
+        <Property name="ContourValues" proxy_name="Contour2" exposed_name="Isosurfaces-"/>
+      </ExposedProperties>
+      <OutputPort name="Contour-" proxy="Contour2" port_index="0"/>
+      <OutputPort name="Contour+" proxy="Contour1" port_index="0"/>
+      <Hints>
+        <ShowInMenu/>
+      </Hints>
+    </CompoundSourceProxy>
+  </CustomProxyDefinition>
+  <CustomProxyDefinition name="Knot_outline_contour" group="filters">
+    <CompoundSourceProxy id="6714" servers="1">
+      <Proxy group="filters" type="Contour" id="6527" servers="1" compound_name="Contour1">
+        <Property name="ComputeGradients" id="6527.ComputeGradients" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="6527.ComputeGradients.bool"/>
+        </Property>
+        <Property name="ComputeNormals" id="6527.ComputeNormals" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="6527.ComputeNormals.bool"/>
+        </Property>
+        <Property name="ComputeScalars" id="6527.ComputeScalars" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="6527.ComputeScalars.bool"/>
+        </Property>
+        <Property name="ContourValues" id="6527.ContourValues" number_of_elements="1">
+          <Element index="0" value="0.5"/>
+          <Domain name="scalar_range" id="6527.ContourValues.scalar_range"/>
+        </Property>
+        <Property name="GenerateTriangles" id="6527.GenerateTriangles" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="6527.GenerateTriangles.bool"/>
+        </Property>
+        <Property name="Input" id="6527.Input" number_of_elements="1">
+          <Domain name="groups" id="6527.Input.groups"/>
+          <Domain name="input_array" id="6527.Input.input_array"/>
+          <Domain name="input_type" id="6527.Input.input_type"/>
+        </Property>
+        <Property name="Locator" id="6527.Locator" number_of_elements="1">
+          <Proxy value="6524"/>
+          <Domain name="groups" id="6527.Locator.groups"/>
+          <Domain name="proxy_list" id="6527.Locator.proxy_list">
+            <Proxy value="6524"/>
+            <Proxy value="6525"/>
+            <Proxy value="6526"/>
+          </Domain>
+        </Property>
+        <Property name="OutputPointsPrecision" id="6527.OutputPointsPrecision" number_of_elements="1">
+          <Element index="0" value="2"/>
+          <Domain name="enum" id="6527.OutputPointsPrecision.enum">
+            <Entry value="0" text="Single"/>
+            <Entry value="1" text="Double"/>
+            <Entry value="2" text="Same as input"/>
+          </Domain>
+        </Property>
+        <Property name="SelectInputScalars" id="6527.SelectInputScalars" number_of_elements="5">
+          <Element index="0" value=""/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="Missed"/>
+          <Domain name="array_list" id="6527.SelectInputScalars.array_list">
+            <String text="Missed"/>
+            <String text="Phi"/>
+          </Domain>
+          <Domain name="field_list" id="6527.SelectInputScalars.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+      </Proxy>
+      <Proxy group="incremental_point_locators" type="MergePoints" id="6524" servers="1" compound_name="auto_6524">
+        <Property name="Divisions" id="6524.Divisions" number_of_elements="3">
+          <Element index="0" value="50"/>
+          <Element index="1" value="50"/>
+          <Element index="2" value="50"/>
+        </Property>
+        <Property name="NumberOfPointsPerBucket" id="6524.NumberOfPointsPerBucket" number_of_elements="1">
+          <Element index="0" value="8"/>
+        </Property>
+      </Proxy>
+      <ExposedProperties>
+        <Property name="Input" proxy_name="Contour1" exposed_name="Input"/>
+      </ExposedProperties>
+      <OutputPort name="Output" proxy="Contour1" port_index="0"/>
+      <Hints>
+        <ShowInMenu/>
+      </Hints>
+    </CompoundSourceProxy>
+  </CustomProxyDefinition>
+  <CustomProxyDefinition name="FN_knot_outline" group="filters">
+    <CompoundSourceProxy id="7936" servers="1">
+      <Proxy group="filters" type="Contour" id="7547" servers="1" compound_name="Contour2">
+        <Property name="ComputeGradients" id="7547.ComputeGradients" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="7547.ComputeGradients.bool"/>
+        </Property>
+        <Property name="ComputeNormals" id="7547.ComputeNormals" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="7547.ComputeNormals.bool"/>
+        </Property>
+        <Property name="ComputeScalars" id="7547.ComputeScalars" number_of_elements="1">
+          <Element index="0" value="0"/>
+          <Domain name="bool" id="7547.ComputeScalars.bool"/>
+        </Property>
+        <Property name="ContourValues" id="7547.ContourValues" number_of_elements="1">
+          <Element index="0" value="0.1"/>
+          <Domain name="scalar_range" id="7547.ContourValues.scalar_range"/>
+        </Property>
+        <Property name="GenerateTriangles" id="7547.GenerateTriangles" number_of_elements="1">
+          <Element index="0" value="1"/>
+          <Domain name="bool" id="7547.GenerateTriangles.bool"/>
+        </Property>
+        <Property name="Input" id="7547.Input" number_of_elements="1">
+          <Domain name="groups" id="7547.Input.groups"/>
+          <Domain name="input_array" id="7547.Input.input_array"/>
+          <Domain name="input_type" id="7547.Input.input_type"/>
+        </Property>
+        <Property name="Locator" id="7547.Locator" number_of_elements="1">
+          <Proxy value="7544"/>
+          <Domain name="groups" id="7547.Locator.groups"/>
+          <Domain name="proxy_list" id="7547.Locator.proxy_list">
+            <Proxy value="7544"/>
+            <Proxy value="7545"/>
+            <Proxy value="7546"/>
+          </Domain>
+        </Property>
+        <Property name="OutputPointsPrecision" id="7547.OutputPointsPrecision" number_of_elements="1">
+          <Element index="0" value="2"/>
+          <Domain name="enum" id="7547.OutputPointsPrecision.enum">
+            <Entry value="0" text="Single"/>
+            <Entry value="1" text="Double"/>
+            <Entry value="2" text="Same as input"/>
+          </Domain>
+        </Property>
+        <Property name="SelectInputScalars" id="7547.SelectInputScalars" number_of_elements="5">
+          <Element index="0" value=""/>
+          <Element index="1" value=""/>
+          <Element index="2" value=""/>
+          <Element index="3" value="0"/>
+          <Element index="4" value="ucrossv"/>
+          <Domain name="array_list" id="7547.SelectInputScalars.array_list">
+            <String text="u"/>
+            <String text="ucrossv"/>
+          </Domain>
+          <Domain name="field_list" id="7547.SelectInputScalars.field_list">
+            <Entry value="0" text="Point Data"/>
+          </Domain>
+        </Property>
+      </Proxy>
+      <Proxy group="incremental_point_locators" type="MergePoints" id="7544" servers="1" compound_name="auto_7544">
+        <Property name="Divisions" id="7544.Divisions" number_of_elements="3">
+          <Element index="0" value="50"/>
+          <Element index="1" value="50"/>
+          <Element index="2" value="50"/>
+        </Property>
+        <Property name="NumberOfPointsPerBucket" id="7544.NumberOfPointsPerBucket" number_of_elements="1">
+          <Element index="0" value="8"/>
+        </Property>
+      </Proxy>
+      <ExposedProperties>
+        <Property name="Input" proxy_name="Contour2" exposed_name="Input"/>
+        <Property name="ContourValues" proxy_name="Contour2" exposed_name="Isosurfaces"/>
+      </ExposedProperties>
+      <OutputPort name="Output" proxy="Contour2" port_index="0"/>
+      <Hints>
+        <ShowInMenu/>
+      </Hints>
+    </CompoundSourceProxy>
+  </CustomProxyDefinition>
+</CustomFilterDefinitions>
