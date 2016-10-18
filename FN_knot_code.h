@@ -23,6 +23,8 @@ using namespace std;
 #define HOPF_LINK 3
 #define BORR_RINGS 4
 #define THREE_TWIST 5
+#define SIX_ONE 61
+#define UNLINK 20
 
 /*************************General maths and integer functions*****************************/
 
@@ -57,6 +59,10 @@ double init_hopf_link(void);
 double init_borr_rings(void);
 
 double init_three_twist(void);
+
+double init_six_one(void);
+
+double init_unlink(void);
 
 double initialise_knot();
 
