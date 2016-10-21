@@ -23,6 +23,7 @@ using namespace std;
 #define HOPF_LINK 3
 #define BORR_RINGS 4
 #define THREE_TWIST 5
+#define FROM_UV_FILE 10
 #define SIX_ONE 61
 #define UNLINK 20
 
@@ -87,7 +88,8 @@ void print_uv(double *u, double *v, double *ucv, double t);
 
 /*************************File reading and writing*****************************/
 
-void Bfile_read(double *phi, int *missed);
+int Bfile_read(double *phi, int *missed);
+int uvfile_read(double *u,double *v);
 void print_knot();
 void print_B_phi(double *x, double *y, double*z, double *Bx, double *By, double *Bz, int *ignore, int *ignore1, int *missed, double *phi);
 void print_uv(double *u, double *v, double *ucv, double t);
