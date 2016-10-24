@@ -25,6 +25,8 @@ using namespace std;
 #define THREE_TWIST 5
 #define FROM_UV_FILE 10
 #define SIX_ONE 61
+#define SEVEN_FOUR 74
+#define NINE_THIRTYFIVE 935
 #define UNLINK 20
 
 /*************************General maths and integer functions*****************************/
@@ -62,6 +64,10 @@ double init_borr_rings(void);
 double init_three_twist(void);
 
 double init_six_one(void);
+
+double init_seven_four(void);
+
+double init_nine_thirtyfive(void);
 
 double init_unlink(void);
 
